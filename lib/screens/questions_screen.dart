@@ -6,10 +6,11 @@ class QuestionsScreen extends StatelessWidget {
   const QuestionsScreen({
     super.key,
     required this.onSelectAnswer,
+    required this.submit,
   });
 
   final Function onSelectAnswer;
-
+  final Function() submit;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -24,12 +25,16 @@ class QuestionsScreen extends StatelessWidget {
 
             return QuestionItem(
               questionIndex: qIndex,
-              question: question,			  
+              question: question,
               onSelectAnswer: onSelectAnswer,
             );
           }),
 
           const SizedBox(height: 20),
+          SingleChildScrollView(),
+          Padding(padding: EdgeInsets.all(20)),
+
+          ElevatedButton(onPressed: submit, child: Text("submit",textAlign: TextAlign.center),),
         ],
       ),
     );
